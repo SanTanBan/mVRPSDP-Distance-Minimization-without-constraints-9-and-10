@@ -1,12 +1,8 @@
 import time
 import pandas as pd
-import numpy as np
 import matplotlib.pylab as plt
-import seaborn as sns
 import pulp as p
-import random
-from itertools import combinations
-import winsound
+#import winsound
 import os
 import openpyxl
 
@@ -163,7 +159,7 @@ for upto_Node_number in range(1,range_of_number_of_nodes):
     status=prob.solve()
     end_time=time.time()
 
-    winsound.Beep(555-19*upto_Node_number, 888+19*upto_Node_number) # where 500 is the frequency in Hertz and 1000 is the duration in miliseconds
+    #winsound.Beep(555-19*upto_Node_number, 888+19*upto_Node_number) # where 500 is the frequency in Hertz and 1000 is the duration in miliseconds
     print("This is the status:- ", p.LpStatus[prob.status])
     objec_val=p.value(prob.objective)
 
@@ -221,6 +217,7 @@ for upto_Node_number in range(1,range_of_number_of_nodes):
                             break
                 if start_node==0:
                     textfile.write(" --> "+str(start_node)+"\n")
+    textfile.close()
 
     # Call a Workbook() function of openpyxl to create a new blank Workbook object
     wb_individual = openpyxl.Workbook()
